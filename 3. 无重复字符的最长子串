@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        
+        
+        unordered_map<char,int> m;
+        int left=0,res=0;
+        for(int i=0;i<s.size();i++){
+            left=max(left,m[s[i]]);
+            m[s[i]]=i+1;
+            res=max(res,i-left+1);         
+        }
+        return res;
+
+
+    }
+};
+
+//使用unordered_map<char,int> m，可以定义而不赋值，巧妙的不用find方法直接查找替换，经典滑窗方法
